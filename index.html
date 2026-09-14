@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paolo Bonaccorsi — Real Estate Salesperson, Fremont &amp; East Bay</title>
+<meta name="description" content="Paolo Bonaccorsi, California DRE #02339106, real estate salesperson serving Fremont and the East Bay under American United Mortgage Corp, DRE #01864229.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:      #F1EDE6;
+    --surface:    #FAF8F4;
+    --ink:        #262119;
+    --ink-soft:   #5C5343;
+    --ink-faint:  #948B78;
+    --rule:       #DCD3C2;
+    --rule-soft:  #E8E1D3;
+    --bronze:     #8A6B3F;
+    --bronze-dim: #EDE1CC;
+
+    --f-display: "Fraunces", Georgia, "Times New Roman", serif;
+    --f-body: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #17140F;
+      --surface:    #1E1A14;
+      --ink:        #EDE6D8;
+      --ink-soft:   #B6AC97;
+      --ink-faint:  #857C69;
+      --rule:       #332C21;
+      --rule-soft:  #262115;
+      --bronze:     #CFA35F;
+      --bronze-dim: #2B2213;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:      #17140F;
+    --surface:    #1E1A14;
+    --ink:        #EDE6D8;
+    --ink-soft:   #B6AC97;
+    --ink-faint:  #857C69;
+    --rule:       #332C21;
+    --rule-soft:  #262115;
+    --bronze:     #CFA35F;
+    --bronze-dim: #2B2213;
+  }
+
+  * { box-sizing: border-box; }
+  html { color-scheme: light dark; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 17px;
+    line-height: 1.65;
+    padding-inline: 24px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; }
+  a { color: var(--bronze); }
+  a:focus-visible { outline: 2px solid var(--bronze); outline-offset: 3px; border-radius: 2px; }
+
+  /* ---- compliance lockup: broker + agent, matched weight ---- */
+  .disclosure-bar {
+    padding-block: 14px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .disclosure-bar strong { color: var(--ink); font-weight: 600; }
+
+  header.masthead {
+    padding-block: 26px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .lockup {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .lockup .broker {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .lockup .agent {
+    font-family: var(--f-display);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  nav.top { display: flex; gap: 22px; }
+  nav.top a { color: var(--ink-soft); font-size: 14px; font-weight: 500; text-decoration: none; }
+  nav.top a:hover { color: var(--ink); }
+
+  .hero {
+    padding-block: 56px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    border-bottom: 1px solid var(--rule);
+  }
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; }
+  }
+  .hero h1 {
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: clamp(2.1rem, 5.5vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+  .hero p.lede { color: var(--ink-soft); font-size: 1.05rem; max-width: 42ch; margin: 0 0 24px; }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .cta {
+    display: inline-block;
+    padding: 12px 20px;
+    font-weight: 600;
+    font-size: 14.5px;
+    text-decoration: none;
+    border-radius: 3px;
+  }
+  .cta.primary { background: var(--ink); color: var(--paper); }
+  .cta.secondary { border: 1px solid var(--rule); color: var(--ink); }
+
+  .photo-slot {
+    aspect-ratio: 4 / 5;
+    border: 1px dashed var(--rule);
+    background: var(--surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    color: var(--ink-faint);
+    font-size: 13px;
+    border-radius: 3px;
+  }
+
+  section { padding-block: 56px; border-bottom: 1px solid var(--rule); }
+  section:last-of-type { border-bottom: none; }
+  .kicker {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 14px;
+  }
+  h2 {
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: clamp(1.4rem, 3vw, 1.75rem);
+    margin: 0 0 18px;
+    text-wrap: balance;
+  }
+  .about p { max-width: 62ch; color: var(--ink-soft); }
+  .about p + p { margin-top: 1em; }
+
+  .services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .service {
+    background: var(--surface);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .service h3 { font-family: var(--f-display); font-weight: 500; font-size: 1.1rem; margin: 0; }
+  .service p { font-size: 14.5px; color: var(--ink-soft); margin: 0; }
+
+  .area p { color: var(--ink-soft); max-width: 58ch; }
+
+  .contact-block { display: flex; flex-direction: column; gap: 16px; }
+  .contact-block p { color: var(--ink-soft); max-width: 50ch; }
+  .contact-row { display: flex; gap: 24px; flex-wrap: wrap; }
+  .contact-item { display: flex; flex-direction: column; gap: 2px; }
+  .contact-item .label { font-size: 12px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.06em; }
+  .contact-item a, .contact-item span { color: var(--ink); font-weight: 600; text-decoration: none; }
+
+  footer {
+    padding-block: 36px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-size: 12.5px;
+    color: var(--ink-faint);
+  }
+  .footer-disclosure {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    padding: 16px 18px;
+    background: var(--bronze-dim);
+    border-radius: 3px;
+  }
+  .footer-disclosure strong { color: var(--ink); }
+  .eho {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .eho svg { flex-shrink: 0; }
+
+  @media (max-width: 520px) {
+    .hero { padding-block: 40px 44px; }
+    section { padding-block: 40px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="disclosure-bar" role="note" aria-label="Broker disclosure">
+    <span><strong>American United Mortgage Corp</strong> &middot; DRE #01864229</span>
+    <span><strong>Paolo Bonaccorsi</strong>, Salesperson &middot; DRE #02339106</span>
+  </div>
+
+  <header class="masthead">
+    <div class="lockup">
+      <div class="broker">American United Mortgage Corp</div>
+      <div class="agent">Paolo Bonaccorsi, Salesperson</div>
+    </div>
+    <nav class="top" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#area">Area</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" style="border-bottom:1px solid var(--rule);">
+    <div>
+      <h1>Fremont &amp; East Bay real estate, handled straight.</h1>
+      <p class="lede">Buying or selling in Fremont and the surrounding East Bay, working under American United Mortgage Corp with representation and financing under one roof.</p>
+      <div class="cta-row">
+        <a class="cta primary" href="#contact">Get in touch</a>
+        <a class="cta secondary" href="#services">See services</a>
+      </div>
+    </div>
+    <div class="photo-slot" role="img" aria-label="Placeholder for professional headshot or property photography">
+      Photo slot &mdash; professional headshot goes here before launch
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="kicker">About</div>
+    <h2>A Bay Area native, working close to home</h2>
+    <p>Paolo Bonaccorsi is a California-licensed real estate salesperson (DRE #02339106) based in Fremont, working under the supervision of responsible broker American United Mortgage Corp (DRE #01864229).</p>
+    <p>Fremont born and raised, with a background that spans technology, research, and finding the practical path through complicated decisions &mdash; the same instinct applied here to buying and selling homes.</p>
+  </section>
+
+  <section id="services">
+    <div class="kicker">Services</div>
+    <h2>What I help with</h2>
+    <div class="services">
+      <div class="service">
+        <h3>Buyers</h3>
+        <p>Finding the right property, structuring a competitive offer, and navigating inspection through close.</p>
+      </div>
+      <div class="service">
+        <h3>Sellers</h3>
+        <p>Pricing strategy, prepping a property to show well, and managing the process end to end.</p>
+      </div>
+      <div class="service">
+        <h3>Financing context</h3>
+        <p>Working alongside American United Mortgage Corp means financing questions get answered early, not after an offer's already in.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="area" class="area">
+    <div class="kicker">Service area</div>
+    <h2>Fremont and the East Bay</h2>
+    <p>Primary focus on Fremont, including Antelope Hills and the surrounding neighborhoods, with coverage across the broader East Bay.</p>
+  </section>
+
+  <section id="contact">
+    <div class="kicker">Contact</div>
+    <h2>Start the conversation</h2>
+    <div class="contact-block">
+      <p>Whether you're a few months out or ready to make a move now, the first conversation costs nothing.</p>
+      <div class="contact-row">
+        <div class="contact-item">
+          <span class="label">Email</span>
+          <a href="mailto:pbonaccorsi@gmail.com">pbonaccorsi@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="label">Area</span>
+          <span>Fremont, CA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-disclosure">
+      <span><strong>Paolo Bonaccorsi</strong>, Salesperson &middot; CA DRE #02339106</span>
+      <span>Responsible broker: <strong>American United Mortgage Corp</strong> &middot; CA DRE #01864229</span>
+    </div>
+    <div class="eho">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 2 2 10h3v11h6v-6h2v6h6V10h3L12 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      </svg>
+      <span>Equal Housing Opportunity</span>
+    </div>
+    <div>&copy; 2026 Paolo Bonaccorsi. Not legal advice; disclosure language reviewed against CA Bus. &amp; Prof. Code §§10140.6, 10235.5, 10236.4.</div>
+  </footer>
+
+</div>
+</body>
+</html>
