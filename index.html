@@ -7,238 +7,175 @@
 <meta name="description" content="Paolo Bonaccorsi, California DRE #02339106, real estate salesperson serving Fremont and the East Bay under American United Mortgage Corp, DRE #01864229.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper:      #F1EDE6;
     --surface:    #FAF8F4;
+    --surface-2:  #EFE7D8;
     --ink:        #262119;
     --ink-soft:   #5C5343;
     --ink-faint:  #948B78;
     --rule:       #DCD3C2;
     --rule-soft:  #E8E1D3;
     --bronze:     #8A6B3F;
+    --bronze-ink: #6B502C;
     --bronze-dim: #EDE1CC;
+    --shadow: 0 1px 2px rgba(38,33,25,.05), 0 16px 32px -16px rgba(38,33,25,.18);
 
     --f-display: "Fraunces", Georgia, "Times New Roman", serif;
     --f-body: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --paper:      #17140F;
-      --surface:    #1E1A14;
-      --ink:        #EDE6D8;
-      --ink-soft:   #B6AC97;
-      --ink-faint:  #857C69;
-      --rule:       #332C21;
-      --rule-soft:  #262115;
-      --bronze:     #CFA35F;
-      --bronze-dim: #2B2213;
+      --paper:      #17140F; --surface: #1E1A14; --surface-2: #262015;
+      --ink:        #EDE6D8; --ink-soft: #B6AC97; --ink-faint: #857C69;
+      --rule:       #332C21; --rule-soft: #262115;
+      --bronze:     #CFA35F; --bronze-ink: #E3BC7C; --bronze-dim: #2B2213;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 20px 40px -16px rgba(0,0,0,.55);
     }
   }
   :root[data-theme="dark"] {
-    --paper:      #17140F;
-    --surface:    #1E1A14;
-    --ink:        #EDE6D8;
-    --ink-soft:   #B6AC97;
-    --ink-faint:  #857C69;
-    --rule:       #332C21;
-    --rule-soft:  #262115;
-    --bronze:     #CFA35F;
-    --bronze-dim: #2B2213;
+    --paper: #17140F; --surface: #1E1A14; --surface-2: #262015;
+    --ink: #EDE6D8; --ink-soft: #B6AC97; --ink-faint: #857C69;
+    --rule: #332C21; --rule-soft: #262115;
+    --bronze: #CFA35F; --bronze-ink: #E3BC7C; --bronze-dim: #2B2213;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 20px 40px -16px rgba(0,0,0,.55);
   }
 
   * { box-sizing: border-box; }
-  html { color-scheme: light dark; }
+  html { color-scheme: light dark; scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: var(--f-body);
-    font-size: 17px;
-    line-height: 1.65;
-    padding-inline: 24px;
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--f-body); font-size: 17px; line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 920px; margin: 0 auto; }
-  a { color: var(--bronze); }
+  .wrap { max-width: 1000px; margin: 0 auto; padding-inline: 24px; }
+  a { color: var(--bronze-ink); }
   a:focus-visible { outline: 2px solid var(--bronze); outline-offset: 3px; border-radius: 2px; }
 
-  /* ---- compliance lockup: broker + agent, matched weight ---- */
+  .progress { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: var(--bronze); z-index: 60; transition: width .1s linear; }
+
+  /* ---- compliance bar + sticky lockup ---- */
   .disclosure-bar {
-    padding-block: 14px;
-    border-bottom: 1px solid var(--rule);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px 20px;
-    font-size: 13px;
-    color: var(--ink-soft);
+    background: var(--surface-2);
+    font-size: 12.5px; color: var(--ink-soft);
+  }
+  .disclosure-bar .wrap {
+    padding-block: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px 20px;
   }
   .disclosure-bar strong { color: var(--ink); font-weight: 600; }
 
   header.masthead {
-    padding-block: 26px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 14px;
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--paper) 85%, transparent);
+    backdrop-filter: blur(10px) saturate(1.1);
+    -webkit-backdrop-filter: blur(10px) saturate(1.1);
+    border-bottom: 1px solid transparent;
+    transition: border-color .25s ease, box-shadow .25s ease;
   }
-  .lockup {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-  .lockup .broker {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--ink);
-  }
-  .lockup .agent {
-    font-family: var(--f-display);
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--ink);
-  }
+  header.masthead.scrolled { border-bottom-color: var(--rule); box-shadow: 0 8px 24px -20px rgba(0,0,0,.35); }
+  header.masthead .wrap { padding-block: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+  .lockup { display: flex; flex-direction: column; gap: 2px; }
+  .lockup .broker { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); }
+  .lockup .agent { font-family: var(--f-display); font-size: 18px; font-weight: 500; color: var(--ink); }
   nav.top { display: flex; gap: 22px; }
   nav.top a { color: var(--ink-soft); font-size: 14px; font-weight: 500; text-decoration: none; }
   nav.top a:hover { color: var(--ink); }
 
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+  /* ---- hero ---- */
   .hero {
-    padding-block: 56px 60px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-    border-bottom: 1px solid var(--rule);
+    position: relative; overflow: hidden;
+    padding-block: 64px 64px; border-bottom: 1px solid var(--rule);
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center;
   }
-  @media (max-width: 720px) {
-    .hero { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 760px) { .hero { grid-template-columns: 1fr; } }
   .hero h1 {
-    font-family: var(--f-display);
-    font-weight: 500;
-    font-size: clamp(2.1rem, 5.5vw, 3rem);
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    margin: 0 0 18px;
-    text-wrap: balance;
+    font-family: var(--f-display); font-weight: 500; font-size: clamp(2.2rem, 5.8vw, 3.2rem);
+    line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 20px; text-wrap: balance;
   }
-  .hero p.lede { color: var(--ink-soft); font-size: 1.05rem; max-width: 42ch; margin: 0 0 24px; }
+  .hero p.lede { color: var(--ink-soft); font-size: 1.08rem; max-width: 42ch; margin: 0 0 28px; }
   .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
-  .cta {
-    display: inline-block;
-    padding: 12px 20px;
-    font-weight: 600;
-    font-size: 14.5px;
-    text-decoration: none;
-    border-radius: 3px;
-  }
-  .cta.primary { background: var(--ink); color: var(--paper); }
+  .cta { display: inline-block; padding: 13px 22px; font-weight: 600; font-size: 14.5px; text-decoration: none; border-radius: 4px; transition: transform .2s ease; }
+  .cta.primary { background: var(--ink); color: var(--paper); box-shadow: var(--shadow); }
+  .cta.primary:hover { transform: translateY(-1px); }
   .cta.secondary { border: 1px solid var(--rule); color: var(--ink); }
+  .cta.secondary:hover { border-color: var(--bronze); }
 
-  .photo-slot {
-    aspect-ratio: 4 / 5;
-    border: 1px dashed var(--rule);
-    background: var(--surface);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 24px;
-    color: var(--ink-faint);
-    font-size: 13px;
-    border-radius: 3px;
+  .hero-art {
+    aspect-ratio: 4/5; border-radius: 8px; overflow: hidden; position: relative;
+    background: linear-gradient(175deg, var(--surface) 0%, var(--surface-2) 100%);
+    border: 1px solid var(--rule); box-shadow: var(--shadow);
+  }
+  .hero-art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hero-art .tag {
+    position: absolute; left: 16px; bottom: 16px; background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(6px); padding: 8px 12px; border-radius: 4px; font-size: 12px; color: var(--ink-faint);
+    border: 1px solid var(--rule);
   }
 
-  section { padding-block: 56px; border-bottom: 1px solid var(--rule); }
+  section { padding-block: 64px; border-bottom: 1px solid var(--rule); }
   section:last-of-type { border-bottom: none; }
-  .kicker {
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    margin-bottom: 14px;
-  }
-  h2 {
-    font-family: var(--f-display);
-    font-weight: 500;
-    font-size: clamp(1.4rem, 3vw, 1.75rem);
-    margin: 0 0 18px;
-    text-wrap: balance;
-  }
+  .kicker { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 16px; }
+  h2 { font-family: var(--f-display); font-weight: 500; font-size: clamp(1.5rem, 3.2vw, 1.9rem); margin: 0 0 20px; text-wrap: balance; }
+
   .about p { max-width: 62ch; color: var(--ink-soft); }
   .about p + p { margin-top: 1em; }
 
-  .services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 1px;
-    background: var(--rule);
-    border: 1px solid var(--rule);
-  }
+  .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
   .service {
-    background: var(--surface);
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 6px;
+    padding: 26px; display: flex; flex-direction: column; gap: 10px;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
   }
-  .service h3 { font-family: var(--f-display); font-weight: 500; font-size: 1.1rem; margin: 0; }
+  .service:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--bronze); }
+  .service .icon { width: 34px; height: 34px; color: var(--bronze); }
+  .service h3 { font-family: var(--f-display); font-weight: 500; font-size: 1.15rem; margin: 0; }
   .service p { font-size: 14.5px; color: var(--ink-soft); margin: 0; }
 
-  .area p { color: var(--ink-soft); max-width: 58ch; }
+  .area { display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: center; }
+  @media (max-width: 700px) { .area { grid-template-columns: 1fr; } }
+  .area p { color: var(--ink-soft); max-width: 52ch; }
+  .area-map { aspect-ratio: 5/4; border-radius: 8px; border: 1px solid var(--rule); background: var(--surface); overflow: hidden; }
+  .area-map svg { width: 100%; height: 100%; }
 
-  .contact-block { display: flex; flex-direction: column; gap: 16px; }
+  .contact-block { display: flex; flex-direction: column; gap: 18px; }
   .contact-block p { color: var(--ink-soft); max-width: 50ch; }
-  .contact-row { display: flex; gap: 24px; flex-wrap: wrap; }
-  .contact-item { display: flex; flex-direction: column; gap: 2px; }
+  .contact-row { display: flex; gap: 28px; flex-wrap: wrap; }
+  .contact-item { display: flex; flex-direction: column; gap: 3px; }
   .contact-item .label { font-size: 12px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.06em; }
-  .contact-item a, .contact-item span { color: var(--ink); font-weight: 600; text-decoration: none; }
+  .contact-item a, .contact-item span { color: var(--ink); font-weight: 600; text-decoration: none; font-size: 1.05rem; }
+  .contact-item a:hover { color: var(--bronze-ink); }
 
-  footer {
-    padding-block: 36px 48px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    font-size: 12.5px;
-    color: var(--ink-faint);
-  }
-  .footer-disclosure {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 18px;
-    padding: 16px 18px;
-    background: var(--bronze-dim);
-    border-radius: 3px;
-  }
+  footer { padding-block: 40px 52px; display: flex; flex-direction: column; gap: 16px; font-size: 12.5px; color: var(--ink-faint); }
+  .footer-disclosure { display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 18px 20px; background: var(--bronze-dim); border-radius: 6px; }
   .footer-disclosure strong { color: var(--ink); }
-  .eho {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  .eho { display: flex; align-items: center; gap: 8px; }
   .eho svg { flex-shrink: 0; }
 
   @media (max-width: 520px) {
-    .hero { padding-block: 40px 44px; }
-    section { padding-block: 40px; }
+    .hero { padding-block: 44px 44px; }
+    section { padding-block: 44px; }
   }
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="progress" id="progress"></div>
 
-  <div class="disclosure-bar" role="note" aria-label="Broker disclosure">
+<div class="disclosure-bar">
+  <div class="wrap">
     <span><strong>American United Mortgage Corp</strong> &middot; DRE #01864229</span>
     <span><strong>Paolo Bonaccorsi</strong>, Salesperson &middot; DRE #02339106</span>
   </div>
+</div>
 
-  <header class="masthead">
+<header class="masthead" id="masthead">
+  <div class="wrap">
     <div class="lockup">
       <div class="broker">American United Mortgage Corp</div>
       <div class="agent">Paolo Bonaccorsi, Salesperson</div>
@@ -249,10 +186,13 @@
       <a href="#area">Area</a>
       <a href="#contact">Contact</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <section class="hero" style="border-bottom:1px solid var(--rule);">
-    <div>
+<div class="wrap">
+
+  <section class="hero">
+    <div class="reveal in">
       <h1>Fremont &amp; East Bay real estate, handled straight.</h1>
       <p class="lede">Buying or selling in Fremont and the surrounding East Bay, working under American United Mortgage Corp with representation and financing under one roof.</p>
       <div class="cta-row">
@@ -260,47 +200,70 @@
         <a class="cta secondary" href="#services">See services</a>
       </div>
     </div>
-    <div class="photo-slot" role="img" aria-label="Placeholder for professional headshot or property photography">
-      Photo slot &mdash; professional headshot goes here before launch
+    <div class="hero-art reveal in" role="img" aria-label="Stylized contour illustration of the Fremont hills, placeholder for a professional headshot">
+      <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <path d="M-20 380 C 60 320, 120 340, 180 300 S 300 240, 420 280" fill="none" stroke="var(--bronze)" stroke-width="1.4" opacity=".55"/>
+        <path d="M-20 410 C 70 350, 140 380, 200 335 S 320 275, 420 320" fill="none" stroke="var(--bronze)" stroke-width="1.4" opacity=".4"/>
+        <path d="M-20 440 C 80 385, 160 415, 220 370 S 340 310, 420 355" fill="none" stroke="var(--bronze)" stroke-width="1.4" opacity=".28"/>
+        <path d="M-20 470 C 90 420, 180 450, 240 405 S 360 345, 420 390" fill="none" stroke="var(--bronze)" stroke-width="1.4" opacity=".18"/>
+        <circle cx="330" cy="90" r="46" fill="var(--bronze)" opacity=".12"/>
+      </svg>
+      <div class="tag">Photo slot &mdash; headshot goes here before launch</div>
     </div>
   </section>
 
   <section id="about" class="about">
     <div class="kicker">About</div>
-    <h2>A Bay Area native, working close to home</h2>
-    <p>Paolo Bonaccorsi is a California-licensed real estate salesperson (DRE #02339106) based in Fremont, working under the supervision of responsible broker American United Mortgage Corp (DRE #01864229).</p>
-    <p>Fremont born and raised, with a background that spans technology, research, and finding the practical path through complicated decisions &mdash; the same instinct applied here to buying and selling homes.</p>
+    <h2 class="reveal">A Bay Area native, working close to home</h2>
+    <p class="reveal">Paolo Bonaccorsi is a California-licensed real estate salesperson (DRE #02339106) based in Fremont, working under the supervision of responsible broker American United Mortgage Corp (DRE #01864229).</p>
+    <p class="reveal">Fremont born and raised, with a background that spans technology, research, and finding the practical path through complicated decisions &mdash; the same instinct applied here to buying and selling homes.</p>
   </section>
 
   <section id="services">
     <div class="kicker">Services</div>
-    <h2>What I help with</h2>
-    <div class="services">
+    <h2 class="reveal">What I help with</h2>
+    <div class="services reveal">
       <div class="service">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 11l9-7 9 7M5 10v10h5v-6h4v6h5V10" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
         <h3>Buyers</h3>
         <p>Finding the right property, structuring a competitive offer, and navigating inspection through close.</p>
       </div>
       <div class="service">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20V10l8-6 8 6v10M9 20v-6h6v6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
         <h3>Sellers</h3>
         <p>Pricing strategy, prepping a property to show well, and managing the process end to end.</p>
       </div>
       <div class="service">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18" stroke="currentColor" stroke-width="1.6"/></svg>
         <h3>Financing context</h3>
         <p>Working alongside American United Mortgage Corp means financing questions get answered early, not after an offer's already in.</p>
       </div>
     </div>
   </section>
 
-  <section id="area" class="area">
+  <section id="area">
     <div class="kicker">Service area</div>
-    <h2>Fremont and the East Bay</h2>
-    <p>Primary focus on Fremont, including Antelope Hills and the surrounding neighborhoods, with coverage across the broader East Bay.</p>
+    <div class="area reveal">
+      <div>
+        <h2>Fremont and the East Bay</h2>
+        <p>Primary focus on Fremont, including Antelope Hills and the surrounding neighborhoods, with coverage across the broader East Bay.</p>
+      </div>
+      <div class="area-map">
+        <svg viewBox="0 0 300 240" aria-hidden="true">
+          <rect width="300" height="240" fill="var(--surface)"/>
+          <path d="M10 190 L60 140 L100 165 L150 100 L200 150 L240 120 L290 170" fill="none" stroke="var(--bronze)" stroke-width="1.4" opacity=".6"/>
+          <circle cx="150" cy="130" r="4" fill="var(--bronze)"/>
+          <circle cx="150" cy="130" r="14" fill="none" stroke="var(--bronze)" stroke-width="1" opacity=".5"/>
+          <circle cx="150" cy="130" r="26" fill="none" stroke="var(--bronze)" stroke-width="1" opacity=".3"/>
+        </svg>
+      </div>
+    </div>
   </section>
 
   <section id="contact">
     <div class="kicker">Contact</div>
-    <h2>Start the conversation</h2>
-    <div class="contact-block">
+    <h2 class="reveal">Start the conversation</h2>
+    <div class="contact-block reveal">
       <p>Whether you're a few months out or ready to make a move now, the first conversation costs nothing.</p>
       <div class="contact-row">
         <div class="contact-item">
@@ -330,5 +293,29 @@
   </footer>
 
 </div>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var header = document.getElementById('masthead');
+  var progress = document.getElementById('progress');
+  function onScroll(){
+    var y = window.scrollY || document.documentElement.scrollTop;
+    header.classList.toggle('scrolled', y > 8);
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (h > 0 ? Math.min(100, (y / h) * 100) : 0) + '%';
+  }
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  if (!reduced && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal:not(.in)').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
 </body>
 </html>
