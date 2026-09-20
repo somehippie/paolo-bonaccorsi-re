@@ -70,6 +70,13 @@
   }
   .disclosure-bar strong { color: var(--ink); font-weight: 600; }
 
+  .dre-link {
+    color: inherit; text-decoration: underline;
+    text-decoration-style: dotted; text-decoration-thickness: 1px; text-underline-offset: 3px;
+    transition: color .2s ease;
+  }
+  .dre-link:hover, .dre-link:focus-visible { color: var(--bronze-ink); text-decoration-style: solid; }
+
   header.masthead {
     position: sticky; top: 0; z-index: 50;
     background: color-mix(in srgb, var(--paper) 85%, transparent);
@@ -172,8 +179,8 @@
 
 <div class="disclosure-bar">
   <div class="wrap">
-    <span><strong>American United Mortgage Corp</strong> &middot; DRE #01864229</span>
-    <span><strong>Paolo Bonaccorsi</strong>, Salesperson &middot; DRE #02339106</span>
+    <span><strong>American United Mortgage Corp</strong> &middot; <a class="dre-link" href="https://www2.dre.ca.gov/publicasp/pplinfo.asp?License_id=01864229" target="_blank" rel="noopener noreferrer" aria-label="Verify American United Mortgage Corp&#39;s California DRE license 01864229 on the DRE public lookup, opens in a new tab">DRE #01864229</a></span>
+    <span><strong>Paolo Bonaccorsi</strong>, Salesperson &middot; <a class="dre-link" href="https://www2.dre.ca.gov/publicasp/pplinfo.asp?License_id=02339106" target="_blank" rel="noopener noreferrer" aria-label="Verify Paolo Bonaccorsi&#39;s California DRE license 02339106 on the DRE public lookup, opens in a new tab">DRE #02339106</a></span>
   </div>
 </div>
 
@@ -283,8 +290,8 @@
 
   <footer>
     <div class="footer-disclosure">
-      <span><strong>Paolo Bonaccorsi</strong>, Salesperson &middot; CA DRE #02339106</span>
-      <span>Responsible broker: <strong>American United Mortgage Corp</strong> &middot; CA DRE #01864229</span>
+      <span><strong>Paolo Bonaccorsi</strong>, Salesperson &middot; CA <a class="dre-link" href="https://www2.dre.ca.gov/publicasp/pplinfo.asp?License_id=02339106" target="_blank" rel="noopener noreferrer" aria-label="Verify Paolo Bonaccorsi&#39;s California DRE license 02339106 on the DRE public lookup, opens in a new tab">DRE #02339106</a></span>
+      <span>Responsible broker: <strong>American United Mortgage Corp</strong> &middot; CA <a class="dre-link" href="https://www2.dre.ca.gov/publicasp/pplinfo.asp?License_id=01864229" target="_blank" rel="noopener noreferrer" aria-label="Verify American United Mortgage Corp&#39;s California DRE license 01864229 on the DRE public lookup, opens in a new tab">DRE #01864229</a></span>
     </div>
     <div class="eho">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
