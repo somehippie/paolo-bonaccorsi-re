@@ -11,7 +11,7 @@ This site uses the shared Paolo Bonaccorsi design system, "re" flavor.
 | Local copy (always read this first) | `design/tokens.css`, `design/components.css`, `design/components/TitleBlock/README.md` |
 | Live system (newest version, if this session can open it) | https://claude.ai/artifact/H4iPL8SHr22EAq9nAgy1XC |
 
-If the live system and the local copy disagree, stop and ask which wins.
+The files in design/ are a trimmed copy of the design system containing only this site's flavor. Missing files, missing other-flavor rules and comment differences are intentional. Stop and ask only if a token value or a rule this site uses differs from the live system.
 
 ## Rules
 
