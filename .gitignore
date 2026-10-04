@@ -1,3 +1,4 @@
 # Local-only scan patterns. Never commit the terms you are scanning for.
 .pii-extra-patterns
 .msg-blocklist
+.pii-allow
