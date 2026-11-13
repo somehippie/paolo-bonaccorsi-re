@@ -1,15 +1,15 @@
 /* Generated from the Paolo Bonaccorsi design system tokens.json. Do not edit by hand. */
 :root {
-  --re-paper: #f4f5f2;
-  --re-surface: #ffffff;
-  --re-surface-2: #e6e9e5;
-  --re-ink: #17222c;
-  --re-ink-soft: #43505c;
-  --re-ink-faint: #56636f;
-  --re-rule: #c9cfd2;
-  --re-accent: #1f5584;
-  --re-accent-ink: #183f63;
-  --re-on-accent: #ffffff;
+  --re-paper: #e4e6e3;
+  --re-surface: #f2f3f1;
+  --re-surface-2: #d6d9d6;
+  --re-ink: #17191b;
+  --re-ink-soft: #464c51;
+  --re-ink-faint: #545b61;
+  --re-rule: #b9bebd;
+  --re-accent: #2f5644;
+  --re-accent-ink: #264536;
+  --re-on-accent: #f2f3f1;
   --re-ridge: #c9a04e;
   --space-1: 4px;
   --space-2: 8px;
@@ -28,30 +28,30 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-  --re-paper: #0f1c2a;
-  --re-surface: #152536;
-  --re-surface-2: #1c2f43;
-  --re-ink: #e3eaf0;
-  --re-ink-soft: #a6b6c4;
-  --re-ink-faint: #8a9cac;
-  --re-rule: #2b4057;
-  --re-accent: #8db8e0;
-  --re-accent-ink: #a9cbea;
-  --re-on-accent: #0f1c2a;
+  --re-paper: #141618;
+  --re-surface: #1c1f22;
+  --re-surface-2: #262a2e;
+  --re-ink: #e6e8e6;
+  --re-ink-soft: #a9afb3;
+  --re-ink-faint: #8e959a;
+  --re-rule: #33383d;
+  --re-accent: #8db9a2;
+  --re-accent-ink: #a6cbb7;
+  --re-on-accent: #141618;
   --re-ridge: #d9ae55;
   }
 }
 :root[data-theme="dark"] {
-  --re-paper: #0f1c2a;
-  --re-surface: #152536;
-  --re-surface-2: #1c2f43;
-  --re-ink: #e3eaf0;
-  --re-ink-soft: #a6b6c4;
-  --re-ink-faint: #8a9cac;
-  --re-rule: #2b4057;
-  --re-accent: #8db8e0;
-  --re-accent-ink: #a9cbea;
-  --re-on-accent: #0f1c2a;
+  --re-paper: #141618;
+  --re-surface: #1c1f22;
+  --re-surface-2: #262a2e;
+  --re-ink: #e6e8e6;
+  --re-ink-soft: #a9afb3;
+  --re-ink-faint: #8e959a;
+  --re-rule: #33383d;
+  --re-accent: #8db9a2;
+  --re-accent-ink: #a6cbb7;
+  --re-on-accent: #141618;
   --re-ridge: #d9ae55;
 }
 

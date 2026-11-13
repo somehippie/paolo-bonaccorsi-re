@@ -14,8 +14,8 @@ survey ink and the gold of the hills in summer.
 | | |
 |---|---|
 | Typeface | Public Sans, the US civic typeface, with tabular figures for licence numbers |
-| Ground | Drafting-film white in light, cyanotype blue in dark |
-| Accent | Survey blue for links, the primary button and the focus ring |
+| Ground | Faceplate grey in light, charcoal in dark, shared with the Small Tech LLC site |
+| Accent | Pine green for links, the primary button and the focus ring |
 | Mark | The ridge line in summer-hills gold (`favicon.svg`), used only for the mark |
 | Signature component | The TitleBlock: the licence and broker disclosure, drawn like the title block on a survey drawing |
 
@@ -72,7 +72,7 @@ change.
 ## Accessibility
 
 Every text colour is checked against its background and meets WCAG AA at
-minimum in both themes. Keyboard focus shows a solid 2px survey-blue outline.
+minimum in both themes. Keyboard focus shows a solid 2px pine-green outline.
 The page has no scroll animations, so there is no motion to reduce.
 
 ## Rights
