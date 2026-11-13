@@ -36,14 +36,14 @@ in the footer. If either number or the brokerage affiliation changes, update
 
 ## Stack
 
-No build step, no dependencies, no framework, no JavaScript. One HTML file plus
-the design system's stylesheets.
+No build step, no dependencies, no framework. One HTML file plus the design
+system's stylesheets, and a few lines of inline script for the theme switch.
 
 | | |
 |---|---|
 | Fonts | Public Sans, via Google Fonts |
 | Hosting | GitHub Pages, deployed from `main` at root |
-| Theming | CSS custom properties, light and dark, following the system preference |
+| Theming | CSS custom properties, light and dark, following the system preference; a switch in the masthead overrides it, remembered in `localStorage` |
 
 ## Structure
 
