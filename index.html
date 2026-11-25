@@ -80,6 +80,8 @@
   .area-layout p { color: var(--ink-soft); max-width: 52ch; }
   .area-map { aspect-ratio: 5/4; border-radius: var(--radius-md); border: 1px solid var(--rule); background: var(--surface); overflow: hidden; }
   .area-map img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .area-photo { margin: 0; }
+  .area-photo figcaption { margin-top: var(--space-2); color: var(--ink-faint); }
 
   .contact-block p { color: var(--ink-soft); max-width: 50ch; margin-bottom: var(--space-6); }
   .contact-row { display: flex; gap: var(--space-8); flex-wrap: wrap; }
@@ -163,9 +165,12 @@
         <h2 class="re-h2">Fremont and the East Bay</h2>
         <p>Primary focus on Fremont, including Antelope Hills, Mission San Jose and coverage across the broader East Bay.</p>
       </div>
-      <div class="area-map">
-        <img src="hills.jpg" srcset="hills-640.jpg 640w, hills.jpg 1280w" sizes="(max-width: 700px) 100vw, 45vw" width="1280" height="854" loading="lazy" decoding="async" alt="Green, oak-dotted hills under a partly cloudy sky">
-      </div>
+      <figure class="area-photo">
+        <div class="area-map">
+          <img src="hills.jpg" srcset="hills-640.jpg 640w, hills.jpg 1280w" sizes="(max-width: 700px) 100vw, 45vw" width="1280" height="854" loading="lazy" decoding="async" alt="Green, oak-dotted foothills of Mission Peak under a partly cloudy sky">
+        </div>
+        <figcaption class="re-small">Mission Peak foothills from the Stanford Avenue trailhead</figcaption>
+      </figure>
     </div>
   </section>
 
