@@ -1,0 +1,381 @@
+/*
+  Real estate site, v2 page layout.
+  Reads only the design system's roles (--paper, --surface, --surface-2, --ink, --ink-soft,
+  --ink-faint, --rule, --accent, --accent-ink, --on-accent) and its space and radius tokens.
+  Sizes come from the type classes (44, 28, 22, 18, 17, 14) and the components (15, 16, 13).
+  No new colours, fonts, sizes, spacing values, radii, shadows or gradients.
+  One motion moment: a town's outline draws in when you pick it on the map.
+*/
+
+* { box-sizing: border-box; }
+html { color-scheme: light dark; }
+body { margin: 0; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, p, figure, dl, dd { margin: 0; }
+[hidden] { display: none !important; }
+img { max-width: 100%; }
+.wrap { max-width: 1000px; margin: 0 auto; padding-inline: var(--space-4); }
+@media (min-width: 720px) { .wrap { padding-inline: var(--space-6); } }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.skip {
+  position: absolute; left: var(--space-4); top: var(--space-2); z-index: 10;
+  transform: translateY(-200%);
+  background: var(--surface); color: var(--ink); border: 1px solid var(--ink-faint);
+  border-radius: var(--radius-sm); padding: var(--space-2) var(--space-4); font-weight: 600;
+}
+.skip:focus { transform: none; }
+
+/* ---- compliance bar ---- */
+.disclosure-bar { background: var(--surface-2); color: var(--ink-soft); }
+.disclosure-bar .wrap {
+  padding-block: var(--space-2); display: flex; justify-content: space-between; align-items: baseline;
+  flex-wrap: wrap; gap: var(--space-1) var(--space-6);
+}
+.disclosure-bar strong { color: var(--ink); font-weight: 600; }
+.disclosure-bar a, .about .re-figure { white-space: nowrap; }
+
+/* ---- masthead: static, no blur ---- */
+.masthead { border-bottom: 1px solid var(--rule); }
+.masthead .wrap {
+  padding-block: var(--space-4); display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: var(--space-3) var(--space-6);
+}
+.lockup { display: flex; align-items: center; gap: var(--space-3); }
+.lockup img { width: 32px; height: 32px; flex: none; border-radius: var(--radius-sm); }
+.lockup .agent { font-weight: 600; color: var(--ink); }
+.lockup .broker { color: var(--ink-soft); }
+nav.top { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-6); }
+nav.top a { color: var(--ink); text-decoration: none; }
+nav.top a:hover { color: var(--accent-ink); text-decoration: underline; }
+.theme-toggle {
+  font-family: inherit; color: var(--ink-soft); background: none; border: 1px solid var(--ink-faint); border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-3); cursor: pointer; min-height: 32px;
+}
+.theme-toggle:hover { color: var(--ink); border-color: var(--ink); }
+
+/* ---- hero ---- */
+.hero { padding-block: var(--space-12); border-bottom: 1px solid var(--rule); }
+@media (min-width: 720px) { .hero { padding-block: var(--space-24) var(--space-16); } }
+.hero h1 { max-width: 20ch; margin-bottom: var(--space-6); text-wrap: balance; }
+.hero .lede { color: var(--ink-soft); max-width: 42ch; margin-bottom: var(--space-8); }
+.cta-row { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+.hero .paths { margin-top: var(--space-6); color: var(--ink-soft); max-width: 52ch; }
+
+/* ---- sections ---- */
+section { padding-block: var(--space-12); border-bottom: 1px solid var(--rule); }
+@media (min-width: 720px) { section { padding-block: var(--space-16); } }
+section h2 { margin-bottom: var(--space-6); text-wrap: balance; }
+.section-lede { color: var(--ink-soft); max-width: 62ch; margin-bottom: var(--space-8); }
+
+.about p { max-width: 62ch; color: var(--ink-soft); }
+.about p + p { margin-top: var(--space-4); }
+
+.services { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-4); }
+.service {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius-md);
+  padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-3);
+}
+.service p { color: var(--ink-soft); }
+
+.area-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-8); align-items: center; }
+@media (max-width: 700px) { .area-layout { grid-template-columns: 1fr; } }
+.area-layout p { color: var(--ink-soft); max-width: 52ch; }
+.area-map { aspect-ratio: 5/4; border-radius: var(--radius-md); border: 1px solid var(--rule); background: var(--surface); overflow: hidden; }
+.area-map img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.area-photo { margin: 0; }
+.area-photo figcaption { margin-top: var(--space-2); color: var(--ink-faint); }
+
+/* ---- Fremont is five towns: the survey sheet ---- */
+.towns { margin-top: var(--space-16); }
+.towns > h3 { margin-bottom: var(--space-4); }
+.towns-lede { color: var(--ink-soft); max-width: 62ch; margin-bottom: var(--space-8); }
+.towns-layout { display: grid; gap: var(--space-8); }
+@media (min-width: 860px) {
+  .towns-layout { grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr); align-items: start; }
+}
+
+.plat {
+  position: relative; aspect-ratio: 400 / 480; max-width: 100%;
+  border: 1.5px solid var(--ink); border-radius: var(--radius-0); background: var(--surface);
+  overflow: hidden;
+}
+.plat svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+/* linework: every stroke reads a role */
+.water { fill: url(#hatch-water); }
+.water-line { stroke: var(--rule); stroke-width: 1.4; }
+.hatch-line { stroke: var(--ink-faint); stroke-width: 1.6; }
+.shore { fill: none; stroke: var(--ink-faint); stroke-width: 1.2; }
+.contours path { fill: none; stroke: var(--rule); stroke-width: 1.2; }
+.limits { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-dasharray: 10 3 2 3; }
+.creek { fill: none; stroke: var(--ink-faint); stroke-width: 1.2; }
+.lake { fill: url(#hatch-water); stroke: var(--ink-faint); stroke-width: 1; }
+.freeway .casing { fill: none; stroke: var(--ink-soft); stroke-width: 5.5; }
+.freeway .core { fill: none; stroke: var(--surface); stroke-width: 2.5; }
+.rail { fill: none; stroke: var(--ink-soft); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.bart { fill: none; stroke: var(--ink); stroke-width: 3.5; }
+.station { fill: var(--ink); stroke: var(--surface); stroke-width: 1.5; }
+.station-rail { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; }
+.summit { fill: var(--surface); stroke: var(--ink); stroke-width: 1.5; stroke-linejoin: round; }
+.north line { stroke: var(--ink); stroke-width: 1.5; }
+.north path { fill: var(--ink); }
+
+.parcel { fill: var(--surface-2); stroke: var(--ink-faint); stroke-width: 1; cursor: pointer; }
+.parcel:hover { stroke: var(--ink); stroke-width: 1.5; }
+.parcel-edge { fill: none; stroke: var(--accent); stroke-width: 2.75; stroke-linejoin: round; pointer-events: none; opacity: 0; }
+.parcel-edge.is-selected { opacity: 1; stroke-dasharray: 1; stroke-dashoffset: 0; animation: survey-draw .6s ease-out both; }
+@keyframes survey-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) { .parcel-edge.is-selected { animation: none; } }
+
+/* labels are HTML so they stay 14px at every map size; town labels are real buttons */
+.plat-label, .plat-note {
+  position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%);
+  font-family: var(--face); font-size: 14px; line-height: 1.2; white-space: nowrap;
+}
+.plat-label {
+  font-weight: 600; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--ink-faint); border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-2); min-height: 28px; cursor: pointer;
+}
+.plat-label:hover { border-color: var(--ink); }
+.plat-label[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.plat-label.two-line { white-space: normal; width: 9ch; text-align: center; }
+.plat-note { color: var(--ink-soft); pointer-events: none; background: var(--surface); padding: 0 var(--space-1); border-radius: var(--radius-sm); }
+.plat-note.adjoiner, .plat-note.water-label { color: var(--ink-faint); }
+.plat-note.rotated { transform: translate(-50%, -50%) rotate(-90deg); }
+.plat-note.anchor-right { transform: translate(-100%, -50%); }
+.plat-note.shield {
+  font-weight: 600; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--ink-soft); border-radius: var(--radius-sm); padding: 0 var(--space-1);
+}
+.plat-note.north-label { font-weight: 600; color: var(--ink); }
+
+.plat-key {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--space-2) var(--space-4); margin-top: var(--space-4); color: var(--ink-soft);
+}
+.plat-key div { display: flex; align-items: center; gap: var(--space-2); }
+.plat-key dt { flex: none; line-height: 0; }
+.plat-key svg { width: 28px; height: 10px; overflow: visible; }
+.plat-caption { margin-top: var(--space-3); color: var(--ink-faint); max-width: 62ch; }
+
+.town-card {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius-md);
+  padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-4);
+}
+.town-cards { display: grid; gap: var(--space-4); }
+.js .town-card:not(.is-current) { display: none; }
+.town-card > p { color: var(--ink-soft); }
+.facts { display: grid; border-top: 1px solid var(--rule); }
+.facts > div { display: grid; gap: var(--space-1); padding-block: var(--space-3); border-bottom: 1px solid var(--rule); }
+.facts dt { font-size: 14px; line-height: 1.5; color: var(--ink-faint); }
+.facts dd { color: var(--ink); }
+.sources { font-size: 14px; line-height: 1.5; color: var(--ink-faint); }
+
+/* ---- tabs: a segmented control; the pressed segment takes the accent fill ---- */
+.tabs {
+  display: inline-flex; gap: var(--space-1); padding: var(--space-1);
+  border: 1px solid var(--ink-faint); border-radius: var(--radius-sm); margin-bottom: var(--space-8);
+  background: var(--surface);
+}
+.tabs [role="tab"] {
+  font-family: var(--face); font-size: 15px; font-weight: 600; line-height: 1.2;
+  color: var(--ink); background: transparent; border: 0; border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-6); min-height: 40px; cursor: pointer;
+}
+.tabs [role="tab"]:hover { background: var(--surface-2); }
+.tabs [role="tab"][aria-selected="true"] { background: var(--accent); color: var(--on-accent); }
+
+/* ---- calculators ---- */
+.calc { display: grid; gap: var(--space-8); }
+@media (min-width: 860px) { .calc { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; } }
+.calc-inputs { display: grid; gap: var(--space-6); }
+.field { display: grid; gap: var(--space-2); min-width: 0; }
+.field > label, .field legend { font-size: 14px; line-height: 1.5; font-weight: 600; color: var(--ink); }
+.field legend { padding: 0; margin-bottom: var(--space-2); }
+fieldset.field { border: 0; padding: 0; margin: 0; }
+.help { font-size: 14px; line-height: 1.5; color: var(--ink-faint); }
+.optional { font-weight: 400; color: var(--ink-faint); }
+
+.affix {
+  display: flex; align-items: center; gap: var(--space-2);
+  background: var(--surface); border: 1px solid var(--ink-faint); border-radius: var(--radius-sm);
+  padding-inline: var(--space-3); min-height: 48px;
+}
+.affix:hover { border-color: var(--ink); }
+.affix:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; border-color: var(--ink); }
+.affix .pre, .affix .post { color: var(--ink-soft); font-weight: 600; }
+.affix input {
+  flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink);
+  padding-block: var(--space-2); font-size: 17px; line-height: 1.4; font-weight: 600;
+}
+.affix input:focus { outline: none; }
+.affix input::placeholder { color: var(--ink-faint); font-weight: 400; }
+
+textarea {
+  width: 100%; font-family: var(--face); font-size: 18px; line-height: 1.65; color: var(--ink);
+  background: var(--surface); border: 1px solid var(--ink-faint); border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3); resize: vertical;
+}
+textarea:hover { border-color: var(--ink); }
+
+.seg-options { display: inline-flex; flex-wrap: wrap; gap: var(--space-1); padding: var(--space-1); border: 1px solid var(--ink-faint); border-radius: var(--radius-sm); background: var(--surface); }
+.seg-options label { position: relative; display: inline-flex; cursor: pointer; }
+.seg-options input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.seg-options span {
+  font-size: 15px; font-weight: 600; line-height: 1.2; color: var(--ink);
+  padding: var(--space-2) var(--space-4); border-radius: var(--radius-sm); min-height: 40px;
+  display: inline-flex; align-items: center;
+}
+.seg-options label:hover span { background: var(--surface-2); }
+.seg-options input:checked + span { background: var(--accent); color: var(--on-accent); }
+.seg-options input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.calc-out {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius-md);
+  padding: var(--space-6); display: grid; gap: var(--space-4); min-width: 0;
+}
+@media (min-width: 860px) { .calc-out { position: sticky; top: var(--space-6); } }
+
+/* phones: the total rides along at the bottom of the screen while you fill in the form */
+.mini-total {
+  position: sticky; bottom: 0; z-index: 2;
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1) var(--space-3);
+  background: var(--surface); border: 1px solid var(--ink-faint); border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4); font-size: 14px; line-height: 1.5; color: var(--ink-soft);
+}
+.mini-total strong { color: var(--ink); }
+.mini-total a { margin-left: auto; }
+@media (min-width: 860px) { .mini-total { display: none; } }
+.out-label { font-size: 14px; line-height: 1.5; font-weight: 600; color: var(--ink-soft); }
+.out-total { font-variant-numeric: tabular-nums lining-nums; margin-top: calc(-1 * var(--space-3)); }
+.out-total.is-negative { color: var(--ink); }
+.bar { display: block; width: 100%; height: 14px; }
+.bar .seg-accent { fill: var(--accent); }
+.bar .seg-ink { fill: var(--ink-soft); }
+.bar .seg-strong { fill: var(--ink); }
+.bar .seg-hatch { fill: url(#hatch); }
+.bar .seg-plain { fill: var(--surface-2); stroke: var(--ink-faint); stroke-width: .6; vector-effect: non-scaling-stroke; }
+
+.ledger { width: 100%; border-collapse: collapse; font-size: 17px; line-height: 1.4; }
+.ledger th, .ledger td { text-align: left; padding: var(--space-2) var(--space-2) var(--space-2) 0; border-bottom: 1px solid var(--rule); vertical-align: middle; }
+.ledger thead th { font-size: 14px; line-height: 1.5; font-weight: 600; color: var(--ink-faint); border-bottom: 1px solid var(--ink-faint); }
+.ledger td { color: var(--ink); }
+.ledger .num { text-align: right; font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
+.ledger td.num { font-weight: 600; }
+.ledger tr.total td { font-weight: 600; border-bottom: 0; border-top: 1px solid var(--ink); }
+.ledger tr.muted td { color: var(--ink-faint); font-weight: 400; }
+.ledger .key { width: 20px; }
+.ledger .key svg { display: block; width: 14px; height: 14px; }
+
+.note { font-size: 14px; line-height: 1.5; color: var(--ink-soft); max-width: 62ch; }
+.note .re-figure { font-size: inherit; line-height: inherit; color: var(--ink); }
+.actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.status { color: var(--ink-soft); min-height: 1.5em; }
+
+.saved { margin-top: var(--space-8); }
+.saved h3 { margin-bottom: var(--space-4); }
+.table-scroll { overflow-x: auto; }
+.compare { min-width: 560px; }
+.compare th, .compare td { padding-inline: var(--space-3); }
+.compare th:first-child, .compare td:first-child { padding-left: 0; }
+.link-btn {
+  font-family: inherit; font-size: 14px; color: var(--accent); background: none; border: 0; padding: var(--space-1) 0;
+  text-decoration: underline; text-underline-offset: 3px; cursor: pointer; min-height: 24px;
+}
+.link-btn:hover { color: var(--accent-ink); }
+
+/* ---- market snapshot: a record, so square corners and ink rules like the title block ---- */
+.snapshot { margin-top: var(--space-16); }
+.snapshot h3 { margin-bottom: var(--space-2); }
+.snapshot-meta { color: var(--ink-faint); margin-bottom: var(--space-4); }
+.records {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 1.5px solid var(--ink); border-radius: var(--radius-0); background: var(--surface);
+}
+.records > div { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--ink); border-right: 1px solid var(--ink); display: grid; gap: var(--space-1); margin: 0 -1px -1px 0; }
+.records dt { font-size: 14px; line-height: 1.5; color: var(--ink-faint); }
+.records .v { color: var(--ink); }
+.records .d { font-size: 14px; line-height: 1.5; color: var(--ink-soft); }
+.records { overflow: hidden; }
+@media (min-width: 860px) { .records { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.snapshot .sources { margin-top: var(--space-3); max-width: 70ch; }
+
+/* ---- how it works: real steps, so they are numbered ---- */
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; display: grid; gap: var(--space-4); }
+.step {
+  counter-increment: step; position: relative;
+  background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius-md);
+  padding: var(--space-6) var(--space-6) var(--space-6) calc(var(--space-6) + var(--space-12));
+  display: grid; gap: var(--space-3);
+}
+.step::before {
+  content: counter(step); position: absolute; left: var(--space-6); top: var(--space-6);
+  width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 600; font-variant-numeric: tabular-nums lining-nums;
+  color: var(--ink); border: 1.5px solid var(--ink); border-radius: var(--radius-0);
+}
+.step > p { color: var(--ink-soft); max-width: 62ch; }
+@media (max-width: 520px) {
+  /* phones: the number sits beside the heading, and the text gets the full width */
+  .step { padding: var(--space-4); }
+  .step::before { left: var(--space-4); top: var(--space-4); }
+  .step > h3 { padding-left: calc(32px + var(--space-3)); min-height: 32px; display: flex; align-items: center; }
+}
+.step-checks summary {
+  display: list-item; cursor: pointer; padding-block: var(--space-1);
+  font-size: 14px; line-height: 1.5; font-weight: 600; color: var(--accent);
+  border-radius: var(--radius-sm); width: fit-content;
+}
+.step-checks summary:hover { color: var(--accent-ink); }
+.step-progress { font-weight: 400; color: var(--ink-faint); margin-left: var(--space-2); }
+.step-checks[open] summary { margin-bottom: var(--space-2); }
+.checks { list-style: none; margin: var(--space-1) 0 0; padding: 0; display: grid; gap: var(--space-2); }
+.checks label, .inline-check { display: flex; gap: var(--space-3); align-items: flex-start; cursor: pointer; }
+.checks span, .inline-check span { font-size: 17px; line-height: 1.4; color: var(--ink); }
+.checks input, .inline-check input { width: 20px; height: 20px; margin: 1px 0 0; flex: none; accent-color: var(--accent); cursor: pointer; }
+.checks input:checked + span { color: var(--ink-soft); text-decoration: line-through; text-decoration-color: var(--ink-faint); }
+.checklist-bar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-4); margin-top: var(--space-6); }
+.checklist-bar [data-progress] { color: var(--ink-soft); margin-right: auto; }
+
+/* ---- contact ---- */
+.contact-block > p { color: var(--ink-soft); max-width: 50ch; margin-bottom: var(--space-6); }
+.composer {
+  display: grid; gap: var(--space-6); max-width: 640px; margin-bottom: var(--space-8);
+  background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius-md); padding: var(--space-6);
+}
+.contact-row { display: flex; gap: var(--space-8); flex-wrap: wrap; }
+.contact-item { display: flex; flex-direction: column; gap: var(--space-1); }
+.contact-item .label { color: var(--ink-faint); }
+.contact-item a, .contact-item .value { font-weight: 600; color: var(--ink); }
+.contact-item a { color: var(--accent); }
+
+/* ---- footer ---- */
+footer { padding-block: var(--space-12) var(--space-16); display: flex; flex-direction: column; gap: var(--space-4); color: var(--ink-faint); }
+footer > p { max-width: 70ch; }
+.eho { display: flex; align-items: center; gap: var(--space-2); color: var(--ink-soft); }
+.eho svg { flex-shrink: 0; }
+
+/* ---- print: estimates and checklists are marketing pieces, so they carry the disclosures ---- */
+@media print {
+  :root, :root[data-theme="dark"], :root:not([data-theme="light"]) {
+    --re-paper: #e4e6e3; --re-surface: #f2f3f1; --re-surface-2: #d6d9d6;
+    --re-ink: #17191b; --re-ink-soft: #464c51; --re-ink-faint: #545b61; --re-rule: #b9bebd;
+    --re-accent: #385880; --re-accent-ink: #2f496a; --re-on-accent: #f2f3f1;
+  }
+  .skip, nav.top, .cta-row, .paths, .actions, .status, .tabs, .composer, .checklist-bar button, .plat-label:not([aria-pressed="true"]) { display: none !important; }
+  section, .hero { padding-block: var(--space-6); break-inside: avoid-page; }
+  .calc-out, .step, .town-card, .records { break-inside: avoid; }
+  a[href^="http"]::after { content: none; }
+  body[data-print] main > section, body[data-print] .saved, body[data-print] .snapshot { display: none !important; }
+  body[data-print="buy"] #numbers, body[data-print="sell"] #numbers, body[data-print="steps"] #process { display: block !important; }
+  body[data-print="buy"] #panel-sell, body[data-print="sell"] #panel-buy { display: none !important; }
+  body[data-print="buy"] #panel-buy, body[data-print="sell"] #panel-sell { display: block !important; }
+  body[data-print="steps"] #process [role="tabpanel"] { display: block !important; }
+  body[data-print="steps"] .section-lede { display: none; }
+}

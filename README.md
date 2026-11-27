@@ -77,7 +77,7 @@ The page has no scroll animations, so there is no motion to reduce.
 
 ## v2 preview
 
-**Preview:** https://somehippie.github.io/paolo-bonaccorsi-re/v2/ (hidden from search engines; the homepage above is unchanged)
+**Promoted to the homepage on Nov 27, 2026.** The root files (`index.html`, `site.css`, `site.js`, `og.png`, `404.html`) are now the live site. `v2/` is a leftover noindex copy at https://somehippie.github.io/paolo-bonaccorsi-re/v2/ and can be deleted; edit the root files from here on.
 
 A next-generation version of the same page, built on the same design system: no new colours, fonts, sizes, spacing values or radii, no shadows, gradients or scroll effects. Everything is static and runs in the visitor's browser. Nothing a visitor types leaves the page.
 
@@ -102,8 +102,8 @@ It copies the v2 files to the root, rewrites the `../` paths, removes the previe
 
 | What | Where it lives | Source |
 |---|---|---|
-| Alameda County and Bay Area medians, county sales change, California days to sell | `.snapshot` in `v2/index.html` | C.A.R. monthly Home Sales and Price Report, county table |
-| 30- and 15-year rates | `.snapshot`, the rate field and its help text in `v2/index.html`, `RATES` in `v2/site.js` | Freddie Mac Primary Mortgage Market Survey, weekly |
+| Alameda County and Bay Area medians, county sales change, California days to sell | `.snapshot` in `index.html` | C.A.R. monthly Home Sales and Price Report, county table |
+| 30- and 15-year rates | `.snapshot`, the rate field and its help text in `index.html`, `RATES` in `site.js` | Freddie Mac Primary Mortgage Market Survey, weekly |
 | Example price | `b-price` and `s-price` values and their help text | The same C.A.R. county median |
 | Property tax default | `b-tax` value and help text | Alameda County rate for tax rate area 12-013, new each fiscal year |
 
