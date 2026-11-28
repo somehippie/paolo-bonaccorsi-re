@@ -157,15 +157,15 @@
 
     <div class="towns">
       <h3 class="re-h3">Fremont is five towns</h3>
-      <p class="towns-lede">Fremont was incorporated in 1956 from five towns: Centerville, Irvington, Mission San Jose, Niles and Warm Springs. The names still mark the neighborhoods. Pick one on the map.</p>
+      <p class="towns-lede">Fremont was incorporated in 1956 from five towns: Centerville, Irvington, Mission San Jose, Niles and Warm Springs. The names still mark the neighborhoods. Its neighbors went other ways: Newark incorporated on its own, Alvarado and Decoto joined as Union City, and Sunol never incorporated at all. Pick a place on the map.</p>
 
       <div class="towns-layout">
         <div class="plat-wrap">
-          <div class="plat" role="group" aria-label="Schematic map of Fremont and its five original towns">
-            <svg viewBox="0 0 400 480" aria-hidden="true" focusable="false">
+          <div class="plat" role="group" aria-label="Schematic map of Fremont, its five original towns, and its neighbors Newark, Union City and Sunol">
+            <svg viewBox="0 -70 480 550" aria-hidden="true" focusable="false">
               <!-- San Francisco Bay, west -->
-              <path class="water" d="M0 0 L50 0 C56 36 60 70 61 100 C62 140 50 182 47 222 C44 268 58 312 80 350 C102 388 128 430 154 480 L0 480 Z"/>
-              <path class="shore" d="M50 0 C56 36 60 70 61 100 C62 140 50 182 47 222 C44 268 58 312 80 350 C102 388 128 430 154 480"/>
+              <path class="water" d="M0 -70 L44 -70 C47 -46 49 -22 50 0 C56 36 60 70 61 100 C62 140 50 182 47 222 C44 268 58 312 80 350 C102 388 128 430 154 480 L0 480 Z"/>
+              <path class="shore" d="M44 -70 C47 -46 49 -22 50 0 C56 36 60 70 61 100 C62 140 50 182 47 222 C44 268 58 312 80 350 C102 388 128 430 154 480"/>
 
               <!-- Hills: contour lines along the east side, Coyote Hills to the northwest -->
               <g class="contours">
@@ -175,20 +175,27 @@
                 <path d="M358 278 C368 262 392 266 396 288 C400 312 380 324 364 320 C348 316 348 292 358 278 Z"/>
                 <path d="M74 98 C80 90 94 92 96 102 C98 112 86 118 78 114 C70 110 70 104 74 98 Z"/>
                 <path d="M68 96 C76 82 100 86 102 104 C104 120 84 126 72 120 C62 114 62 104 68 96 Z"/>
-                <path d="M338 68 C358 76 378 76 400 70"/>
-                <path d="M338 122 C360 114 380 114 400 112"/>
+                <path d="M338 68 C358 76 378 76 400 70 C414 66 422 60 430 52"/>
+                <path d="M338 122 C360 114 380 114 400 112 C408 118 412 130 414 146"/>
+                <path d="M480 40 C470 70 474 110 466 140 C460 168 470 196 480 214"/>
+                <path d="M300 -20 C318 -8 332 10 340 34"/>
               </g>
 
               <!-- City limits of Fremont (schematic) -->
               <path class="limits" d="M74 72 C104 62 134 60 164 62 L206 60 C240 64 270 58 300 52 C330 46 360 48 386 62 L392 120 C392 180 390 240 386 300 C382 350 372 398 350 438 C318 450 280 454 240 452 C206 448 176 432 152 404 C134 382 124 360 118 336 L150 304 L150 234 C130 222 110 206 98 186 C86 166 80 146 78 124 C76 106 74 90 74 72 Z"/>
 
               <!-- Water features inside the city -->
-              <path class="creek" d="M400 92 C380 94 360 100 340 104 C310 110 285 116 255 118 C225 120 200 112 175 104 C140 94 100 90 62 92"/>
+              <path class="creek" d="M452 214 C448 180 446 150 440 124 C434 104 418 94 400 92 C380 94 360 100 340 104 C310 110 285 116 255 118 C225 120 200 112 175 104 C140 94 100 90 62 92"/>
               <ellipse class="lake" cx="203" cy="129" rx="10" ry="5"/>
               <ellipse class="lake" cx="222" cy="136" rx="8" ry="4.5"/>
               <ellipse class="lake" cx="254" cy="214" rx="12" ry="6"/>
 
               <!-- Town parcels (schematic areas, not boundaries) -->
+              <g class="parcels neighbors">
+                <path class="parcel neighbor" data-town="newark" d="M98 186 C110 206 130 222 150 234 L150 304 L118 336 L84 346 C66 318 52 290 49 262 C47 238 52 214 62 198 Z"/>
+                <path class="parcel neighbor" data-town="union-city" d="M62 -46 L150 -54 L232 -50 L290 -34 L322 -4 L330 50 L300 52 L206 60 L164 62 C134 60 104 62 74 72 C68 38 63 -4 62 -46 Z"/>
+                <path class="parcel neighbor" data-town="sunol" d="M408 80 L436 60 L474 68 L478 132 L466 178 L430 182 L412 150 Z"/>
+              </g>
               <g class="parcels">
                 <path class="parcel" data-town="niles" d="M250 70 L300 58 L346 64 L352 100 L306 112 L258 108 Z"/>
                 <path class="parcel" data-town="centerville" d="M132 106 L214 98 L224 176 L196 194 L156 190 L140 152 Z"/>
@@ -198,23 +205,27 @@
               </g>
               <!-- Freeways (cased double line) -->
               <g class="freeway">
-                <path class="casing" d="M118 56 C122 120 132 180 146 240 C160 300 178 360 204 452"/>
-                <path class="core" d="M118 56 C122 120 132 180 146 240 C160 300 178 360 204 452"/>
-                <path class="casing" d="M390 168 C368 186 346 200 338 220 C326 252 320 290 312 330 C304 372 294 412 286 452"/>
-                <path class="core" d="M390 168 C368 186 346 200 338 220 C326 252 320 290 312 330 C304 372 294 412 286 452"/>
+                <path class="casing" d="M110 -70 C114 -10 116 20 118 56 C122 120 132 180 146 240 C160 300 178 360 204 452"/>
+                <path class="core" d="M110 -70 C114 -10 116 20 118 56 C122 120 132 180 146 240 C160 300 178 360 204 452"/>
+                <path class="casing" d="M464 -70 C456 -10 452 50 448 96 C446 130 420 154 390 168 C368 186 346 200 338 220 C326 252 320 290 312 330 C304 372 294 412 286 452"/>
+                <path class="core" d="M464 -70 C456 -10 452 50 448 96 C446 130 420 154 390 168 C368 186 346 200 338 220 C326 252 320 290 312 330 C304 372 294 412 286 452"/>
               </g>
 
               <!-- ACE and Capitol Corridor rail line, dashed -->
-              <path class="rail" d="M300 96 C270 112 246 128 222 146 C202 160 186 170 168 178 C148 188 132 200 118 214"/>
+              <path class="rail" d="M480 6 C466 40 454 80 440 110 C428 130 400 100 372 98 C346 96 320 92 300 96 C270 112 246 128 222 146 C202 160 186 170 168 178 C148 188 132 200 118 214"/>
 
 
               <!-- BART -->
-              <path class="bart" d="M206 0 C212 50 220 110 226 150 C230 176 232 190 234 202 C240 240 246 280 250 312 C254 344 258 370 262 392 C266 414 268 440 272 480"/>
+              <path class="bart" d="M196 -70 C200 -40 203 -20 206 0 C212 50 220 110 226 150 C230 176 232 190 234 202 C240 240 246 280 250 312 C254 344 258 370 262 392 C266 414 268 440 272 480"/>
+              <rect class="station" x="197.5" y="-28.5" width="9" height="9"/>
               <rect class="station" x="229.5" y="197.5" width="9" height="9"/>
               <rect class="station" x="257.5" y="387.5" width="9" height="9"/>
               <rect class="station-rail" x="163.5" y="173.5" width="9" height="9"/>
 
               <g class="parcel-edges">
+                <path class="parcel-edge" data-town="newark" pathLength="1" d="M98 186 C110 206 130 222 150 234 L150 304 L118 336 L84 346 C66 318 52 290 49 262 C47 238 52 214 62 198 Z"/>
+                <path class="parcel-edge" data-town="union-city" pathLength="1" d="M62 -46 L150 -54 L232 -50 L290 -34 L322 -4 L330 50 L300 52 L206 60 L164 62 C134 60 104 62 74 72 C68 38 63 -4 62 -46 Z"/>
+                <path class="parcel-edge" data-town="sunol" pathLength="1" d="M408 80 L436 60 L474 68 L478 132 L466 178 L430 182 L412 150 Z"/>
                 <path class="parcel-edge" data-town="niles" pathLength="1" d="M250 70 L300 58 L346 64 L352 100 L306 112 L258 108 Z"/>
                 <path class="parcel-edge" data-town="centerville" pathLength="1" d="M132 106 L214 98 L224 176 L196 194 L156 190 L140 152 Z"/>
                 <path class="parcel-edge" data-town="irvington" pathLength="1" d="M160 246 L240 240 L252 320 L206 340 L174 318 Z"/>
@@ -232,23 +243,26 @@
               </g>
             </svg>
 
-            <button type="button" class="plat-label" aria-controls="town-cards" data-town="niles" aria-pressed="false" style="--x:75%;--y:17.9%">Niles</button>
-            <button type="button" class="plat-label" aria-controls="town-cards" data-town="centerville" aria-pressed="false" style="--x:41.5%;--y:31.5%">Centerville</button>
-            <button type="button" class="plat-label two-line" aria-controls="town-cards" data-town="mission-san-jose" aria-pressed="false" style="--x:79%;--y:51.5%">Mission San Jose</button>
-            <button type="button" class="plat-label" aria-controls="town-cards" data-town="irvington" aria-pressed="false" style="--x:51%;--y:60.5%">Irvington</button>
-            <button type="button" class="plat-label" aria-controls="town-cards" data-town="warm-springs" aria-pressed="false" style="--x:75%;--y:87.5%">Warm Springs</button>
+            <button type="button" class="plat-label" aria-controls="town-cards" data-town="niles" aria-pressed="false" style="--x:62.5%;--y:28.3%">Niles</button>
+            <button type="button" class="plat-label" aria-controls="town-cards" data-town="centerville" aria-pressed="false" style="--x:34.6%;--y:40.2%">Centerville</button>
+            <button type="button" class="plat-label two-line" aria-controls="town-cards" data-town="mission-san-jose" aria-pressed="false" style="--x:65.8%;--y:57.7%">Mission San Jose</button>
+            <button type="button" class="plat-label" aria-controls="town-cards" data-town="irvington" aria-pressed="false" style="--x:42.5%;--y:65.5%">Irvington</button>
+            <button type="button" class="plat-label neighbor" aria-controls="town-cards" data-town="union-city" aria-pressed="false" style="--x:31.2%;--y:11.6%">Union City</button>
+            <button type="button" class="plat-label neighbor" aria-controls="town-cards" data-town="newark" aria-pressed="false" style="--x:20.8%;--y:61.5%">Newark</button>
+            <button type="button" class="plat-label neighbor" aria-controls="town-cards" data-town="sunol" aria-pressed="false" style="--x:92.3%;--y:34.9%">Sunol</button>
+            <button type="button" class="plat-label" aria-controls="town-cards" data-town="warm-springs" aria-pressed="false" style="--x:62.5%;--y:89.1%">Warm Springs</button>
 
-            <span class="plat-note water-label rotated" style="--x:6.5%;--y:58%">San Francisco Bay</span>
-            <span class="plat-note adjoiner" style="--x:31%;--y:6%">Union City</span>
-            <span class="plat-note adjoiner" style="--x:24%;--y:53.5%">Newark</span>
-            <span class="plat-note adjoiner" style="--x:52%;--y:97%">Milpitas</span>
-            <span class="plat-note" style="--x:16%;--y:25%">Coyote Hills</span>
-            <span class="plat-note water-label" style="--x:36%;--y:16.5%">Alameda Creek</span>
-            <span class="plat-note anchor-right" style="--x:97.5%;--y:25.5%">Niles Canyon</span>
-            <span class="plat-note anchor-right" style="--x:98%;--y:67%">Mission Peak</span>
-            <span class="plat-note shield" style="--x:35%;--y:46%">880</span>
-            <span class="plat-note shield" style="--x:85.5%;--y:43%">680</span>
-            <span class="plat-note north-label" style="--x:7.5%;--y:80%">N</span>
+            <span class="plat-note water-label rotated" style="--x:5.4%;--y:63.3%">San Francisco Bay</span>
+            <span class="plat-note adjoiner" style="--x:43.3%;--y:97.4%">Milpitas</span>
+            <span class="plat-note" style="--x:13.3%;--y:34.5%">Coyote Hills</span>
+            <span class="plat-note historic" style="--x:20.0%;--y:18.2%">Alvarado</span>
+            <span class="plat-note historic" style="--x:55.8%;--y:16.7%">Decoto</span>
+            <span class="plat-note water-label" style="--x:30.0%;--y:27.1%">Alameda Creek</span>
+            <span class="plat-note anchor-right" style="--x:81.2%;--y:35.0%">Niles Canyon</span>
+            <span class="plat-note anchor-right" style="--x:81.7%;--y:71.2%">Mission Peak</span>
+            <span class="plat-note shield" style="--x:29.2%;--y:52.9%">880</span>
+            <span class="plat-note shield" style="--x:63.5%;--y:80.4%">680</span>
+            <span class="plat-note north-label" style="--x:6.2%;--y:82.5%">N</span>
           </div>
 
           <dl class="plat-key re-small" aria-label="Map key">
@@ -256,10 +270,12 @@
             <div><dt><svg viewBox="0 0 28 10" aria-hidden="true"><path class="bart" d="M1 5 H27"/><rect class="station" x="9.5" y="0.5" width="9" height="9"/></svg></dt><dd>BART station</dd></div>
             <div><dt><svg viewBox="0 0 28 10" aria-hidden="true"><path class="rail" d="M1 5 H27"/><rect class="station-rail" x="9.5" y="0.5" width="9" height="9"/></svg></dt><dd>ACE and Capitol Corridor station</dd></div>
             <div><dt><svg viewBox="0 0 28 10" aria-hidden="true"><g class="freeway"><path class="casing" d="M1 5 H27"/><path class="core" d="M1 5 H27"/></g></svg></dt><dd>Freeway</dd></div>
+            <div><dt><svg viewBox="0 0 28 10" aria-hidden="true"><rect class="parcel" x="1" y="1" width="26" height="8"/></svg></dt><dd>Fremont town</dd></div>
+            <div><dt><svg viewBox="0 0 28 10" aria-hidden="true"><rect class="parcel neighbor" x="1" y="1" width="26" height="8"/></svg></dt><dd>Neighbor</dd></div>
             <div><dt><svg viewBox="0 0 28 10" aria-hidden="true"><path class="summit" d="M14 1 L19 9 L9 9 Z"/></svg></dt><dd>Summit</dd></div>
             <div><dt><svg viewBox="0 0 28 10" aria-hidden="true"><rect class="water" x="1" y="1" width="26" height="8"/></svg></dt><dd>Water</dd></div>
           </dl>
-          <p class="re-small plat-caption">Schematic, not to scale. Shaded areas mark the five original towns, not exact boundaries.</p>
+          <p class="re-small plat-caption">Schematic, not to scale. Shaded areas mark the five original towns and outlined areas the neighbors, not exact boundaries. Alvarado and Decoto are the two towns that became Union City.</p>
         </div>
 
         <div class="town-cards" id="town-cards">
@@ -271,6 +287,7 @@
               <div><dt>Land area</dt><dd><span class="re-figure">78.3</span> square miles, plus <span class="re-figure">10.1</span> of water</dd></div>
               <div><dt>Population</dt><dd><span class="re-figure">230,504</span> (2020 Census)</dd></div>
               <div><dt>BART</dt><dd>Fremont station (opened 1972) and Warm Springs/South Fremont (opened 2017)</dd></div>
+              <div><dt>Neighbors</dt><dd>Newark (incorporated <span class="re-figure">1955</span>), Union City (<span class="re-figure">1959</span>) and Sunol (unincorporated)</dd></div>
             </dl>
             <p class="sources">Sources: <a href="https://en.wikipedia.org/wiki/Fremont,_California">Fremont, California</a>; <a href="https://en.wikipedia.org/wiki/Fremont_station_(BART)">Fremont station</a>; <a href="https://en.wikipedia.org/wiki/Warm_Springs/South_Fremont_station">Warm Springs/South Fremont station</a> (Wikipedia)</p>
           </article>
@@ -327,6 +344,46 @@
               <div><dt>Roads</dt><dd>State Route 262 links I-880 and I-680 here</dd></div>
             </dl>
             <p class="sources">Sources: <a href="https://en.wikipedia.org/wiki/Fremont,_California">Fremont, California</a> and <a href="https://en.wikipedia.org/wiki/Warm_Springs/South_Fremont_station">Warm Springs/South Fremont station</a> (Wikipedia)</p>
+          </article>
+          <article class="town-card" data-town="newark" id="town-newark" aria-labelledby="t-newark">
+            <h4 id="t-newark" class="re-h3">Newark</h4>
+            <p>A separate city that Fremont surrounds. I-880 runs along its eastern edge.</p>
+            <dl class="facts">
+              <div><dt>Incorporated</dt><dd><span class="re-figure">September 22, 1955</span>, a few months before Fremont. A <span class="re-figure">1953</span> study had proposed one city of six towns, Newark included; Newark chose to incorporate on its own</dd></div>
+              <div><dt>Name</dt><dd>Chosen by J. Barr Robertson, after Newark Castle in Port Glasgow, Scotland</dd></div>
+              <div><dt>Railroad</dt><dd>The South Pacific Coast Railroad, finished after <span class="re-figure">1876</span> by Alfred Davis and James Fair, ran from Dumbarton Point south to Santa Cruz, and the town moved to the line</dd></div>
+              <div><dt>Carter Brothers</dt><dd>Thomas and Martin Carter moved their car works here in <span class="re-figure">1876</span> and built more than <span class="re-figure">700</span> cars for the South Pacific Coast. Their cars are preserved at Ardenwood Historic Farm in Fremont</dd></div>
+              <div><dt>Salt</dt><dd>Salt making on the bay shore began in the <span class="re-figure">1850s</span>. Leslie Salt, now Cargill, still runs a refinery in Newark</dd></div>
+              <div><dt>Today</dt><dd><span class="re-figure">47,529</span> residents (2020 Census) on <span class="re-figure">13.9</span> square miles</dd></div>
+            </dl>
+            <p class="sources">Sources: <a href="https://newarkca.gov/visitors/about-newark/newark-history">Newark's Roots</a> (City of Newark); <a href="https://en.wikipedia.org/wiki/Newark,_California">Newark, California</a> and <a href="https://en.wikipedia.org/wiki/Carter_Brothers">Carter Brothers</a> (Wikipedia)</p>
+          </article>
+
+          <article class="town-card" data-town="union-city" id="town-union-city" aria-labelledby="t-union-city">
+            <h4 id="t-union-city" class="re-h3">Union City</h4>
+            <p>Fremont's neighbor to the north, between the bay and the hills.</p>
+            <dl class="facts">
+              <div><dt>Formed</dt><dd>Alvarado and Decoto voted to merge on <span class="re-figure">January 13, 1959</span>. Tom Kitayama was the first mayor</dd></div>
+              <div><dt>Name</dt><dd>John and William Horner founded a settlement here in <span class="re-figure">1850</span> and named it after their Sacramento River steamboat, the <cite>Union</cite></dd></div>
+              <div><dt>County seat</dt><dd>Alvarado was Alameda County's first county seat. The first courthouse opened there on <span class="re-figure">June 6, 1853</span>; the seat later moved to San Leandro</dd></div>
+              <div><dt>Sugar</dt><dd>E. H. Dyer's factory in Alvarado began processing beets on <span class="re-figure">November 15, 1870</span>: the nation's first successful beet sugar factory. California Historical Landmark No. <span class="re-figure">768</span> marks the site on Dyer Street</dd></div>
+              <div><dt>Decoto</dt><dd>Named for Ezra Decoto, who sold land to the railroad in <span class="re-figure">1867</span></dd></div>
+              <div><dt>Today</dt><dd><span class="re-figure">70,143</span> residents (2020 Census) on <span class="re-figure">19.2</span> square miles. BART has stopped here since the system opened in <span class="re-figure">1972</span></dd></div>
+            </dl>
+            <p class="sources">Sources: <a href="https://en.wikipedia.org/wiki/Union_City,_California">Union City, California</a>, <a href="https://en.wikipedia.org/wiki/Alvarado,_California">Alvarado, California</a> and <a href="https://en.wikipedia.org/wiki/Decoto">Decoto</a> (Wikipedia); <a href="https://ohp.parks.ca.gov/ListedResources/Detail/768">Landmark No. 768</a> (California Office of Historic Preservation)</p>
+          </article>
+
+          <article class="town-card" data-town="sunol" id="town-sunol" aria-labelledby="t-sunol">
+            <h4 id="t-sunol" class="re-h3">Sunol</h4>
+            <p>Over the hills, up Niles Canyon, where I-680 meets State Route 84. Sunol has never incorporated; it is part of unincorporated Alameda County.</p>
+            <dl class="facts">
+              <div><dt>Name</dt><dd>Antonio Su&ntilde;ol, born in Barcelona in <span class="re-figure">1797</span>, who with three brothers-in-law received Rancho Valle de San Jos&eacute; in <span class="re-figure">1839</span></dd></div>
+              <div><dt>Water Temple</dt><dd>Built in <span class="re-figure">1910</span> to a design by Willis Polk, after the Temple of Vesta in Tivoli. It marks where Alameda Creek, Arroyo de la Laguna and the Pleasanton wells met for the Spring Valley Water Company, San Francisco's water supplier before Hetch Hetchy. As of November 2026 the SFPUC lists it as closed during construction nearby</dd></div>
+              <div><dt>Rail</dt><dd>The restored <span class="re-figure">1884</span> Sunol depot is a stop on the Niles Canyon Railway</dd></div>
+              <div><dt>Mayor</dt><dd>A statue in front of the post office remembers Bosco, the dog the town elected mayor</dd></div>
+              <div><dt>Today</dt><dd>About <span class="re-figure">922</span> residents (2020 Census); Sunol Regional Wilderness is nearby</dd></div>
+            </dl>
+            <p class="sources">Sources: <a href="https://en.wikipedia.org/wiki/Sunol,_California">Sunol, California</a>, <a href="https://en.wikipedia.org/wiki/Antonio_Su%C3%B1ol">Antonio Su&ntilde;ol</a> and <a href="https://en.wikipedia.org/wiki/Sunol_Water_Temple">Sunol Water Temple</a> (Wikipedia); <a href="https://sfpuc.gov/learning/come-visit/sunol-water-temple">Sunol Water Temple</a> (SFPUC)</p>
           </article>
         </div>
       </div>
